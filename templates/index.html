@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2 style="font-family: Arial, sans-serif; color: #333;">Used Car Price Predictor</h2>
+            <div style="margin-bottom: 20px;">
+                <label for="year" style="display: block; font-family: Arial, sans-serif; font-size: 16px;">Year:</label>
+                <input id="year" name="Year" type="number" style="border-radius: 5px; padding: 5px;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="price" style="display: block; font-family: Arial, sans-serif; font-size: 16px;">Showroom Price (In lakhs):</label>
+                <input id="price" name="Present_Price" required="required" style="border-radius: 5px; padding: 5px;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="kms" style="display: block; font-family: Arial, sans-serif; font-size: 16px;">Kilometers Driven:</label>
+                <input id="kms" name="Kms_Driven" required="required" style="border-radius: 5px; padding: 5px;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="owners" style="display: block; font-family: Arial, sans-serif; font-size: 16px;">Number of Previous Owners:</label>
+                <input id="owners" name="Owner" required="required" style="border-radius: 5px; padding: 5px;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="fuel" style="display: block; font-family: Arial, sans-serif; font-size: 16px;">Fuel Type:</label>
+                <select name="Fuel_Type_Petrol" id="fuel" required="required" style="border-radius: 5px; padding: 5px;">
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="CNG">CNG</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="seller" style="display: block; font-family: Arial, sans-serif; font-size: 16px;">Seller Type:</label>
+                <select name="Seller_Type_Individual" id="seller" required="required" style="border-radius: 5px; padding: 5px;">
+                    <option value="Dealer">Dealer</option>
+                    <option value="Individual">Individual</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="transmission" style="display: block; font-family: Arial, sans-serif; font-size: 16px;">Transmission Type:</label>
+                <select name="Transmission_Mannual" id="transmission" required="required" style="border-radius: 5px; padding: 5px;">
+                    <option value="Mannual">Manual Car</option>
+                    <option value="Automatic">Automatic Car</option>
+                </select>
+            </div>
+            <button type="submit" style="border-radius: 5px; padding: 10px 20px; background-color: #333; color: #fff; font-family: Arial, sans-serif; font-size: 16px; border: none; cursor: pointer;">Calculate the Price</button>
+        </form>
+
+        <h3 style="font-family: Arial, sans-serif; color: #333;">{{ prediction_text }}</h3>
+    </div>
+
+    <style>
+        body {
+            background-color: #f2f2f2;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</body>
+
+</html>
